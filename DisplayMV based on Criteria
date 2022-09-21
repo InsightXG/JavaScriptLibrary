@@ -1,0 +1,13 @@
+var output = null;
+var finder = ""; //put the string you are looking for in the quotes
+var mvlookin = columnAlias; //put the columnAlias of the multivalue you want to look through here
+var mvdisplay = columnAlias; //put the columnAlias of the multivalue you want to display here
+var len = mvlookin.length;
+
+for(i=0;i<len;i++)
+{
+if(mvlookin[i] == finder)
+{ouptut = mvdisplay[i];break}
+}
+
+output;
