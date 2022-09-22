@@ -1,0 +1,10 @@
+var output = null;
+var input = columnAlias; //put your date column alias here
+var sdf = new java.text.SimpleDateFormat("MM/dd/yyyy");
+
+//You can enter any date format you want in place of MM/dd/yyyy.  
+//Just make sure to use capital ‘M’ for months, lowercase ‘d’ for days, and lowercase ‘y’ for years.
+
+output = sdf.format(input);
+
+output;
