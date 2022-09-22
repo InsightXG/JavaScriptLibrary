@@ -1,0 +1,26 @@
+var oldValue = id; // put your column alias here
+var len = oldValue.length;
+var padValue = "0"; // put the padding value here
+var padLen = 9; // put the total length of the desired result
+var output = "";
+var pads = "";
+var type = "BACK" //this is where you define where you want the padding, options are FRONT and BACK
+
+if(padLen > len)
+{
+	var newlen = padLen - len;
+	for(i=0;i<newlen;i++)
+	{
+		pads += padValue	
+	}
+
+}
+else(output = oldValue)
+
+if(type == "FRONT")
+{output = pads + oldValue}
+else if(type == "BACK")
+{output = oldValue + pads}
+
+
+output;
