@@ -1,0 +1,10 @@
+var amt = columnAlias; //put you amount array/multivalue alias here
+var len = amt.length;
+var output = 0;
+
+for(i=0;i<len;i++)
+{        
+	{output += new Number(amt[i]);}
+}
+
+output;
