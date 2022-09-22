@@ -1,0 +1,6 @@
+var output = null;
+var input = columnAlias; //put your column alias here
+
+output = input[0][0]
+
+output;
