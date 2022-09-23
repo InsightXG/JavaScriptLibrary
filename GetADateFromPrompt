@@ -1,0 +1,8 @@
+var output = null;
+var promptText  = "Exact prompt text here"; //copy and paste the text fromt the prompt here
+var getPrompt = (_context.arguments.get(promptText));
+var sdf = new java.text.SimpleDateFormat("MM/dd/yyyy"); //change the output style of the date entered here
+
+output = new Date(getPrompt).getTime();
+
+sdf.format(output);
