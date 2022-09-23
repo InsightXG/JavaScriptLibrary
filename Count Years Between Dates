@@ -1,0 +1,19 @@
+var output = null;
+var date1 = beginDate; //please replace the dateColumnAlias1 with the alias of your first date column
+var date2 = endDate; //please replace the dateColumnAlias1 with the alias of your second date column
+
+//in case the first date is empty, we will default it to today's date
+if(!date1)
+{date1 = new Date();}
+
+//in case the second date is empty, we will default it to today's date
+if(!date2)
+{date2 = new Date()}
+
+var diff = date2.getTime() - date1.getTime()
+
+output = Math.floor(diff/(24*60*60*1000*365.25));
+
+output;
+
+
