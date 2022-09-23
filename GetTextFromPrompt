@@ -1,0 +1,9 @@
+var output = null;
+var promptText  = "Exact prompt text here"; //copy and paste the text fromt the prompt here
+var getPrompt = (_context.arguments.get(promptText));
+
+if(getPrompt)
+{output = getPrompt;}
+else(output = "No prompt entered or promptText mismatch, this is the prompt text expected: " + promptText)
+
+output;
