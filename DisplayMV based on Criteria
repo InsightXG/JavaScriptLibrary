@@ -7,7 +7,7 @@ var len = mvlookin.length;
 for(i=0;i<len;i++)
 {
 if(mvlookin[i] == finder)
-{ouptut = mvdisplay[i];break}
+{output = mvdisplay[i];break}
 }
 
 output;
