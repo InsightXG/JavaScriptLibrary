@@ -1,0 +1,121 @@
+var wpyear = workPeriod.substring(0,4);
+var wpmonth = workPeriod.substring(4,6);
+var receivedDate = new Date(wpyear,wpmonth,0);
+//need to compare status history dates for sts group eq NDT and received date within from/thru date, output the local
+var fDate = primaryMemberSsn_assoc_stsFromDate2;
+var tDate = primaryMemberSsn_assoc_stsThruDate;
+var stsLocalMV = primaryMemberSsn_assoc_stsLocal;
+var stsGroupMV = primaryMemberSsn_assoc_stsGroup;
+var len = fDate.length;
+var findLocal = (_context.arguments.get("Enter Member Local"));
+var findFund = (_context.arguments.get("Enter Fund"));
+var fundMV = fund, len2 = fundMV.length;
+var findHours = quantity;
+var output = 0;
+var stscode = primaryMemberSsn_assoc_2_stsCode;
+var stsfind = "PERM";
+var findApp = "HE";
+var checker = 0;
+//this is casing multiple locals at run time
+if(findLocal.indexOf(",") > -1)
+{
+findLocalnew = findLocal.split(",");
+var len3 = findLocalnew.length;
+checker = 1;
+}
+//this is the case for a totally empty thru date and single local
+if(tDate.length == 0 && checker = 0)
+{                  
+        if(fDate[0].getTime() <= receivedDate.getTime() && stscode[0] == stsfind && stsLocalMV[0] == findLocal)
+                    {
+                        //output = "if statment was true";
+                        for(i=0;i<len2;i++)
+                        {
+                            if(fundMV[i] == findFund && appType[i] == findApp)
+                            {output += findHours[i];}
+                        }
+                    }
+}
+//this is the case for a totally empty thru date and mv locals
+else if(tDate.length == 0 && checker == 1)
+{
+	for(i=0;i<len3;i++)
+	{
+		if(fDate[0].getTime() <= receivedDate.getTime() && stscode[0] == stsfind && stsLocalMV[0] == findLocal[i])
+			
+						for(j=0;j<len2;j++)
+                        {
+                            if(fundMV[j] == findFund && appType[j] == findApp)
+                            {output += findHours[j];}
+                        }
+	}
+	
+	
+}
+//this is the case for mv status dates AND mv locals
+else if(tDate.length != 0 && checker == 1)
+{
+	for(j=0;j<len3;j++)
+	{
+		for(i=0;i<len;i++)
+		{
+			//this is a case where some thru dates can be empty
+            if(tDate[i] == null)
+            {
+                if(stsLocalMV[i] == findLocal[j] && fDate[i].getTime() <= receivedDate.getTime() && stscode[i] == stsfind)
+                {
+                    for(k=0;k<len2;k++)
+                        {
+                            if(fundMV[k] == findFund && appType[k] == findApp)
+                            {output += findHours[k];}
+                        }
+                }   
+                //else
+                //{output = "found a null";break}
+            }
+            //this is the case for a totally full thru date
+            else if(stsLocalMV[i] == findLocal[j] && fDate[i].getTime() <= receivedDate.getTime() && receivedDate.getTime() <= tDate[i].getTime() && stscode[i] == stsfind)
+                {
+                    for(k=0;k<len2;k++)
+                        {
+                            if(fundMV[k] == findFund && appType[k] == findApp)
+                            {output += findHours[k];}
+                        }
+                }
+		}
+		
+	}
+	
+	
+}
+//this is the case for mv status dates AND single local
+else
+{
+    for(i=0;i<len;i++)
+           {
+            //this is a case where some thru dates can be empty
+            if(tDate[i] == null)
+            {
+                if(stsLocalMV[i] == findLocal && fDate[i].getTime() <= receivedDate.getTime() && stscode[i] == stsfind)
+                {
+                    for(k=0;k<len2;k++)
+                        {
+                            if(fundMV[k] == findFund && appType[k] == findApp)
+                            {output += findHours[k];}
+                        }
+                }   
+                //else
+                //{output = "found a null";break}
+            }
+            //this is the case for a totally full thru date
+            else if(stsLocalMV[i] == findLocal && fDate[i].getTime() <= receivedDate.getTime() && receivedDate.getTime() <= tDate[i].getTime() && stscode[i] == stsfind)
+                {
+                    for(k=0;k<len2;k++)
+                        {
+                            if(fundMV[k] == findFund && appType[k] == findApp)
+                            {output += findHours[k];}
+                        }
+                }
+           }
+}
+output;
