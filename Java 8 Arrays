@@ -1,0 +1,35 @@
+//string example
+
+var output = new Array()
+var arrType = Java.type("java.lang.String[]");
+
+output.push("Sample")
+output.push("Sample")
+output.push("Sample")
+output.push("Sample")
+
+Java.to(output, arrType);
+
+//number example
+
+var output = new Array()
+var arrType = Java.type("java.lang.Number[]");
+
+output.push(1)
+output.push(2.5)
+output.push(300)
+output.push(4.75)
+
+Java.to(output, arrType);
+
+//date example
+
+var output = new Array()
+var arrType = Java.type("java.util.Date");
+
+output.push(new Date())
+output.push(new Date())
+output.push(new Date())
+output.push(new Date())
+
+Java.to(output, arrType);
