@@ -1,0 +1,8 @@
+var a = contributionDetailInfo_assoc_receivedDate, len = a.lengthvar dates = []
+var sdf = new java.text.SimpleDateFormat("MM/dd/yyyy")
+for(i=0; i<len; i++)
+    {
+        dates.push(new Date(a[i]));
+    }
+var maxDate = sdf.format(Math.max.apply(null,dates));   
+maxDate;
