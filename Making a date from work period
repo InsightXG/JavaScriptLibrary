@@ -1,0 +1,8 @@
+//turning a work period into a date
+var wkpd = ; //put the alias of the work period here
+var periodyear = wkpd.substring(0,4); //this gets the work period year
+var periodmonth = wkpd.substring(4,6); //this gets the work period month
+var newwkpddate = new Date(periodyear,periodmonth-1,1).getTime(); //this creates the new date based on previous variable
+var sdf = new java.text.SimpleDateFormat("MM/dd/yyyy"); //use this to format the date
+
+sdf.format(newwkpddate);
