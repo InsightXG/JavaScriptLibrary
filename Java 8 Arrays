@@ -25,7 +25,7 @@ Java.to(output, arrType);
 //date example
 
 var output = new Array()
-var arrType = Java.type("java.util.Date");
+var arrType = Java.type("java.util.Date[]");
 
 output.push(new Date())
 output.push(new Date())
