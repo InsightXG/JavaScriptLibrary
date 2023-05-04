@@ -1,0 +1,33 @@
+#ZELIS ZIPPING OF FILES
+
+$defaultHIPAAFilters = "*";
+$outDirectory = "/data/CUSTCODE/SFTP/OUT/ZELIS";
+$arcDirectory = "/data/CUSTCODE/SFTP/ARC/ZELIS";
+
+#this function handles the moving of the files
+function FilteredRouting ($filters, $defaultStagingPath) {
+	$files = $transport.GetLocalFileListing("$outDirectory");
+	$filesProcessed = 0;
+	
+	#loops throught the array of comma separated filters listed below
+		Foreach($filter in $filters) 
+	{
+		$filteredFiles=$files|where{$_ -like $filter}
+		$logEntry = 'Filter {0}  returned {1} file(s).' -f $filter, $filteredFiles.Count;
+		$logEntrySubject = "Number of Files found";
+		$opsXgService.UpdateTransaction($transactionReferenceNumber, $logEntrySubject, $logEntry, 0, 2);
+
+	#loops through each file that matched the filter we are in
+	Foreach($file in $filteredFiles) 
+	{
+	$transport.ExecuteSiteCommand("cd $defaultStagingPath; zip -m $file.zip $file")
+	$transport.ExecuteSiteCommand("cd $defaultStagingPath; cp $file.zip $arcDirectory")
+	$logEntrySubject = "File going to Zelis:"
+	$logEntry = $file
+	$opsXgService.UpdateTransaction($transactionReferenceNumber, $logEntrySubject, $logEntry, 0, 1);
+	}
+	}
+   return $filesProcessed;
+}
+
+FilteredRouting $defaultHIPAAFilters $outDirectory
